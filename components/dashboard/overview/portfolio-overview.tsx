@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SimpleLineChart } from "@/components/charts/simple-line-chart";
-import { TrendingUpIcon, TrendingDownIcon, DollarSignIcon, PercentIcon } from "lucide-react";
+import { TrendingUpIcon, TrendingDownIcon, DollarSignIcon } from "lucide-react";
 
 interface PortfolioOverviewProps {
   data: {

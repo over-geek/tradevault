@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { useSidebarState } from "@/hooks/use-sidebar-state";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AddAccountDialog } from "@/components/dialogs/add-account-dialog";
-import { PlusIcon, DollarSignIcon, TrendingUpIcon, TrendingDownIcon } from "lucide-react";
+import { DollarSignIcon, TrendingUpIcon, TrendingDownIcon } from "lucide-react";
 
 export default function AccountsPage() {
   const { isCollapsed } = useSidebarState();
@@ -48,7 +47,19 @@ export default function AccountsPage() {
     }
   ]);
 
-  const handleAddAccount = (newAccount: any) => {
+  interface Account {
+    id: number;
+    name: string;
+    type: string;
+    broker: string;
+    balance: number;
+    dayChange: number;
+    dayChangePercent: number;
+    currency: string;
+    status: string;
+  }
+
+  const handleAddAccount = (newAccount: Account) => {
     setAccounts(prev => [...prev, newAccount]);
   };
 

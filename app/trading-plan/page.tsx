@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { useSidebarState } from "@/hooks/use-sidebar-state";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { NewPlanDialog } from "@/components/dialogs/new-plan-dialog";
 import { EditPlanDialog } from "@/components/dialogs/edit-plan-dialog";
 import { AddRuleDialog } from "@/components/dialogs/add-rule-dialog";
-import { PlusIcon, TargetIcon, AlertTriangleIcon, TrendingUpIcon, BookOpenIcon, EditIcon } from "lucide-react";
+import { TargetIcon, AlertTriangleIcon, TrendingUpIcon, BookOpenIcon, EditIcon } from "lucide-react";
 
 export default function TradingPlanPage() {
   const { isCollapsed } = useSidebarState();
@@ -65,15 +65,35 @@ export default function TradingPlanPage() {
     }
   ]);
 
-  const handleCreatePlan = (newPlan: any) => {
+  interface Plan {
+    name: string;
+    startDate: string;
+    endDate: string;
+    targetReturn: number;
+    currentReturn: number;
+    maxDrawdown: number;
+    currentDrawdown: number;
+    riskPerTrade: number;
+    strategies: string[];
+  }
+
+  interface Rule {
+    id: number;
+    category: string;
+    rule: string;
+    status: string;
+    violations: number;
+  }
+
+  const handleCreatePlan = (newPlan: Plan) => {
     setCurrentPlan(newPlan);
   };
 
-  const handleUpdatePlan = (updatedPlan: any) => {
+  const handleUpdatePlan = (updatedPlan: Plan) => {
     setCurrentPlan(updatedPlan);
   };
 
-  const handleAddRule = (newRule: any) => {
+  const handleAddRule = (newRule: Rule) => {
     setRules(prev => [...prev, newRule]);
   };
 

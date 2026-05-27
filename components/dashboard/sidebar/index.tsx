@@ -27,7 +27,6 @@ import AtomIcon from "@/components/icons/atom";
 import BracketsIcon from "@/components/icons/brackets";
 import ProcessorIcon from "@/components/icons/proccesor";
 import CuteRobotIcon from "@/components/icons/cute-robot";
-import EmailIcon from "@/components/icons/email";
 import GearIcon from "@/components/icons/gear";
 import MonkeyIcon from "@/components/icons/monkey";
 import DotsVerticalIcon from "@/components/icons/dots-vertical";
@@ -91,8 +90,8 @@ export function DashboardSidebar({
     setCurrentPath(window.location.pathname);
 
     // Listen for page changes
-    const handlePageChange = (event: any) => {
-      setCurrentPath(event.detail);
+    const handlePageChange = (event: Event) => {
+      setCurrentPath((event as CustomEvent<string>).detail);
     };
 
     window.addEventListener('page-changed', handlePageChange);

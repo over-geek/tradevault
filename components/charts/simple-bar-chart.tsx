@@ -6,7 +6,7 @@ interface SimpleBarChartProps {
   color?: string;
 }
 
-export function SimpleBarChart({ data, height = 200, color = "#3b82f6" }: SimpleBarChartProps) {
+export function SimpleBarChart({ data, height = 200 }: SimpleBarChartProps) {
   if (!data.length) return null;
 
   const maxValue = Math.max(...data.map(d => Math.abs(d.pnl)));

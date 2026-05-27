@@ -3,7 +3,7 @@
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
 interface PieChartComponentProps {
-  data: any[];
+  data: Array<Record<string, string | number>>;
   dataKey: string;
   nameKey: string;
   colors?: string[];

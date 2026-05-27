@@ -22,8 +22,20 @@ import {
 } from "@/components/ui/select";
 import { PlusIcon } from "lucide-react";
 
+interface Account {
+  id: number;
+  name: string;
+  type: string;
+  broker: string;
+  balance: number;
+  dayChange: number;
+  dayChangePercent: number;
+  currency: string;
+  status: string;
+}
+
 interface AddAccountDialogProps {
-  onAddAccount: (account: any) => void;
+  onAddAccount: (account: Account) => void;
 }
 
 export function AddAccountDialog({ onAddAccount }: AddAccountDialogProps) {

@@ -16,8 +16,20 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { PlusIcon, XIcon } from "lucide-react";
 
+interface Plan {
+  name: string;
+  startDate: string;
+  endDate: string;
+  targetReturn: number;
+  currentReturn: number;
+  maxDrawdown: number;
+  currentDrawdown: number;
+  riskPerTrade: number;
+  strategies: string[];
+}
+
 interface NewPlanDialogProps {
-  onCreatePlan: (plan: any) => void;
+  onCreatePlan: (plan: Plan) => void;
 }
 
 export function NewPlanDialog({ onCreatePlan }: NewPlanDialogProps) {

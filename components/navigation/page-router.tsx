@@ -16,8 +16,8 @@ export function PageRouter() {
       navigateTo(window.location.pathname);
     };
 
-    const handleCustomNavigate = (event: any) => {
-      navigateTo(event.detail);
+    const handleCustomNavigate = (event: Event) => {
+      navigateTo((event as CustomEvent<string>).detail);
     };
 
     window.addEventListener('popstate', handlePopState);

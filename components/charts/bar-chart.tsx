@@ -3,7 +3,7 @@
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 interface BarChartComponentProps {
-  data: any[];
+  data: Array<Record<string, string | number>>;
   dataKey: string;
   xAxisKey: string;
   color?: string;

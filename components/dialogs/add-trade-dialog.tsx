@@ -23,8 +23,23 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { PlusIcon, XIcon } from "lucide-react";
 
+interface Trade {
+  id: number;
+  date: string;
+  symbol: string;
+  type: string;
+  entry: number;
+  exit: number;
+  quantity: number;
+  pnl: number;
+  pnlPercent: number;
+  strategy: string;
+  notes: string;
+  tags: string[];
+}
+
 interface AddTradeDialogProps {
-  onAddTrade: (trade: any) => void;
+  onAddTrade: (trade: Trade) => void;
 }
 
 export function AddTradeDialog({ onAddTrade }: AddTradeDialogProps) {

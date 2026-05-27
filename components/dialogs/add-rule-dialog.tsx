@@ -22,8 +22,16 @@ import {
 } from "@/components/ui/select";
 import { PlusIcon } from "lucide-react";
 
+interface Rule {
+  id: number;
+  category: string;
+  rule: string;
+  status: string;
+  violations: number;
+}
+
 interface AddRuleDialogProps {
-  onAddRule: (rule: any) => void;
+  onAddRule: (rule: Rule) => void;
   children?: React.ReactNode;
 }
 

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { AddTradeDialog } from "@/components/dialogs/add-trade-dialog";
-import { PlusIcon, CalendarIcon, TrendingUpIcon, TrendingDownIcon, BarChart3Icon } from "lucide-react";
+import { CalendarIcon, TrendingUpIcon, TrendingDownIcon, BarChart3Icon } from "lucide-react";
 
 export default function JournalPage() {
   // Mock data for demonstration - now with state
@@ -54,7 +54,22 @@ export default function JournalPage() {
     }
   ]);
 
-  const handleAddTrade = (newTrade: any) => {
+  interface Trade {
+    id: number;
+    date: string;
+    symbol: string;
+    type: string;
+    entry: number;
+    exit: number;
+    quantity: number;
+    pnl: number;
+    pnlPercent: number;
+    strategy: string;
+    notes: string;
+    tags: string[];
+  }
+
+  const handleAddTrade = (newTrade: Trade) => {
     setTrades(prev => [newTrade, ...prev]);
   };
 

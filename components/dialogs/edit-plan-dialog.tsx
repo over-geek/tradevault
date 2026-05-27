@@ -16,9 +16,21 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { XIcon } from "lucide-react";
 
+interface Plan {
+  name: string;
+  startDate: string;
+  endDate: string;
+  targetReturn: number;
+  currentReturn: number;
+  maxDrawdown: number;
+  currentDrawdown: number;
+  riskPerTrade: number;
+  strategies: string[];
+}
+
 interface EditPlanDialogProps {
-  plan: any;
-  onUpdatePlan: (plan: any) => void;
+  plan: Plan;
+  onUpdatePlan: (plan: Plan) => void;
   children: React.ReactNode;
 }
 

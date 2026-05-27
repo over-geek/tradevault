@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SimpleBarChart } from "@/components/charts/simple-bar-chart";
 import { Badge } from "@/components/ui/badge";
-import { BarChart3Icon, TrendingUpIcon, TargetIcon, AlertTriangleIcon } from "lucide-react";
+import { BarChart3Icon, TrendingUpIcon, AlertTriangleIcon } from "lucide-react";
 
 interface TradingPerformanceProps {
   data: {
