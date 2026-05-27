@@ -1,103 +1,93 @@
-import Image from "next/image";
+"use client";
+
+import { PortfolioOverview } from "@/components/dashboard/overview/portfolio-overview";
+import { TradingPerformance } from "@/components/dashboard/overview/trading-performance";
+import { AccountAllocation } from "@/components/dashboard/overview/account-allocation";
+import { RecentActivity } from "@/components/dashboard/overview/recent-activity";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const portfolioData = {
+    totalValue: 85000,
+    dayChange: 1250,
+    dayChangePercent: 1.49,
+    weekChange: 3.2,
+    monthChange: 8.7,
+    performanceData: [
+      { date: "Jan 1", value: 75000 },
+      { date: "Jan 5", value: 76500 },
+      { date: "Jan 10", value: 74800 },
+      { date: "Jan 15", value: 78200 },
+      { date: "Jan 20", value: 79500 },
+      { date: "Jan 25", value: 82000 },
+      { date: "Jan 30", value: 85000 },
+    ],
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const tradingData = {
+    totalTrades: 47,
+    winRate: 66.7,
+    totalPnL: 8750,
+    avgTrade: 186,
+    bestTrade: 2500,
+    worstTrade: -850,
+    monthlyData: [
+      { month: "Oct", pnl: 2100, trades: 15 },
+      { month: "Nov", pnl: 3200, trades: 18 },
+      { month: "Dec", pnl: 1800, trades: 12 },
+      { month: "Jan", pnl: 4200, trades: 22 },
+    ],
+    riskMetrics: {
+      sharpeRatio: 1.34,
+      maxDrawdown: 3.2,
+      winLossRatio: 2.1,
+    },
+  };
+
+  const accountData = {
+    accounts: [
+      { name: "Main Trading", value: 50000, percentage: 58.8, change: 1200, changePercent: 2.5, type: "Live" as const },
+      { name: "Swing Trading", value: 25000, percentage: 29.4, change: 800, changePercent: 3.2, type: "Live" as const },
+      { name: "Demo Account", value: 10000, percentage: 11.8, change: -150, changePercent: -1.5, type: "Demo" as const },
+    ],
+    totalValue: 85000,
+  };
+
+  const activityData = {
+    recentTrades: [
+      { id: "1", symbol: "AAPL", type: "Long" as const, pnl: 680, pnlPercent: 3.67, date: "2024-01-15", status: "completed" as const },
+      { id: "2", symbol: "TSLA", type: "Short" as const, pnl: 280, pnlPercent: 2.33, date: "2024-01-14", status: "completed" as const },
+      { id: "3", symbol: "SPY", type: "Long" as const, pnl: -480, pnlPercent: -1.00, date: "2024-01-13", status: "completed" as const },
+      { id: "4", symbol: "MSFT", type: "Long" as const, pnl: 320, pnlPercent: 1.8, date: "2024-01-12", status: "completed" as const },
+      { id: "5", symbol: "GOOGL", type: "Short" as const, pnl: -150, pnlPercent: -0.8, date: "2024-01-11", status: "completed" as const },
+    ],
+    recentTransactions: [
+      { id: "1", type: "deposit" as const, amount: 5000, account: "Main Trading", date: "2024-01-10" },
+      { id: "2", type: "dividend" as const, amount: 125, account: "Main Trading", date: "2024-01-08" },
+      { id: "3", type: "withdrawal" as const, amount: 1000, account: "Swing Trading", date: "2024-01-05" },
+      { id: "4", type: "deposit" as const, amount: 2000, account: "Demo Account", date: "2024-01-03" },
+    ],
+  };
+
+  return (
+    <div className="p-6 space-y-6 h-full overflow-y-auto">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <p className="text-muted-foreground">Welcome back! Here's your trading overview.</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Top Row - Portfolio Overview and Trading Performance */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <PortfolioOverview data={portfolioData} />
+        <TradingPerformance data={tradingData} />
+      </div>
+
+      {/* Bottom Row - Account Allocation and Recent Activity */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <AccountAllocation data={accountData} />
+        <RecentActivity data={activityData} />
+      </div>
     </div>
   );
 }
